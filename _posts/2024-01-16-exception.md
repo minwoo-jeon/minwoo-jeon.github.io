@@ -274,8 +274,25 @@ Exception 인스턴스를 생성할떄 생성자에 String을 넣어주면, 이 
 
 ### ✅메서드에 예외 선언하기 thorws
 
-* 예외를 처리하는 방법에는 try-catch 문을 사용하는것 외에, 예외를 메서드에 선언하는 방법이있다.
-* 예외를 처리한다기보다는 호출한사람한테 예외를 떠넘긴다는 느낌.
+```
+ File createFile(String fileName) throws  Exception //
+
+ 메서드뒤에 throws Exception을 선언함.
+ 즉 => 이 메서드 사용하려면 예외가 발생하니 예외 처리를 해줘야한다고 선언을함.
+ (즉=> 메서드  사용하는애한테 예외처리 짬떄림).
+```
+
+* throws는 자신을 호출하는 메소드에 예외처리의 책임을 떠넘기는 것이다.
+* 기본적으로 체크 예외 전략이다.
+* 언체크(런타임)예외는 체크 예외와 다르게 throw 예외 선언을 하지않아도 된다.
+* 예외를 잡지 않아도 자연스럽게 상위로 넘어가기 댸문이다.
+
+### ✅왜 예외 처리를 호출한 쪽으로 미루어 처리하나?
+* 메서드는 여러 곳에서 쓰려고 만드는데 그 메소드에 예외가 발생하고 예외처리를 하려하고 하니깐 사용하는곳이 너무 많으면 수많은 예외처리 try catch 구문을 넣어야한다.
+* 만약 이렇게 한구문에 모든것을 넣어버리면 어디서 발생했는지 찾는것도 엄창난 시간이들고, 찾아서 또추가해도 또 다른곳에서 예외가 발생한다.
+* throws를 사용해 호출한쪽에서 처리를 하고 ,thorws 구문에 발생할만 예외를 적어 인계자에게도 시간낭비를 줄일수있음.  
+
+
 
 * 메서드에 예외를 선언하려면, 메서드의 선언부에 키워드 **thorws**를 사용해서 메서드 내에서 발생할수 있는 예외를 적는다. 그 예외가 여러 개인 경우  쉼표(,)로 구분한다.
 
@@ -294,7 +311,7 @@ public class ExceptionTest6 {
         }
     } //main 메서드의 끝
 
-    static File createFile(String fileName) throws  Exception //떠넘긴다고 선언함 {
+    static File createFile(String fileName) throws  Exception  {
         if (fileName==null || fileName.equals(""))
             throw new   Exception("파일 이름이 유효하지 않습니다.");  //예외발생 예외객체생성
         File f = new File(fileName);  // File 클래스의 객채 생성

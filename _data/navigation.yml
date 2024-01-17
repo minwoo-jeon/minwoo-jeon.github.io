@@ -25,16 +25,17 @@ categories:
         url: /Develop/java/
       - title: "Database"
         url: /Develop/database/
+      - title: "Algorithm"
+        url: /Develop/algorithm/
+      - title: "Spring"
+        url: /Develop/spring/    
       - title: "Github"
         url: /Develop/github/  
       - title: "Web"
         url: /Develop/web/  
-      - title: "Algorithm"
-        url: /Develop/algorithm/
       - title: "Markdown"
         url: /Develop/markdown/
-      - title: "Spring"
-        url: /Develop/spring/  
+      
     
 
   - title: ""
