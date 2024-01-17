@@ -11,6 +11,7 @@ permalink: /java/java7/
 
 toc: true
 toc_sticky: true
+published: true
 
 date: 2024-01-17
 last_modified_at: 2024-01-17
