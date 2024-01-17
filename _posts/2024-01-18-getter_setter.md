@@ -1,4 +1,5 @@
 ---
+published: true
 title: "[Java] getter Setter 사용이유"
 excerpt: "getter setter 사용하는 이유에 대해서 알아보자"
 
