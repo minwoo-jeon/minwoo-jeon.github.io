@@ -19,9 +19,13 @@ date: 2024-01-22
 last_modified_at: 2024-01-22
 ---
 
-## 📌컬렉션 프레임워크란?
-컬렉션 프레임워크란 데이터 군을 저장하는 클래스들을 표준화한 설계를 뜻한다. <br>
-즉객체를 쉽고 편리하게 다룰수 있는 다양한 클래스를 제공한다.
+ref -Java의 정석(남궁성) 
+{: .notice--info}
+
+
+### 📌컬렉션 프레임워크란?
+* 컬렉션 프레임워크란 데이터 군을 저장하는 클래스들을 표준화한 설계를 뜻한다. <br>
+=>즉,객체를 쉽고 편리하게 다룰수 있는 다양한 클래스를 제공한다.
 
 ---
 
@@ -47,11 +51,13 @@ ex) id pw
 
 ---
 
+### 📌ArrayList
+
+
 ### ✅ArrayList란?
 * ArrayList는 기존의 Vector를 개선한 것으로 구현 원리와 기능적인 측면에서 동일하다.
 * Vector는 자체적으로 동기화 처리가 되어 있으나 ArrayLsit는 그렇지 않다.
 * List 인테페이스를 구현하므로, 저장 순서가 유지되고 중복을 허용한다.
-
 
 ```java
 package collection;
@@ -108,7 +114,7 @@ public class ArrayListEx1 {
 
 ---
 
-#### ❗ArrayList 에 저장된 객체의 삭제 과정
+### ✅ArrayList 에 저장된 객체의 삭제 과정
 - ArrayList에 <span style="background-color:#fff5b1"> 저장된 </span> 세 번쨰 데이터를(data[2])를 삭제하는 과정 (1/2).<br>
 list.remove(2);를 호출
 
@@ -145,3 +151,77 @@ for(int i= list.size()-1; i>0; i--){
 
 ![image description](/assets/images/collection3.png)<br>
 결과 ==><span style="background-color:#FFE6E6"> 전부삭제 완료. </span><br>
+
+---
+
+
+### 📌LinkedList
+
+### ✅ 배열의 장점과 단점
+* 장점<br>
+  1. **배열은 구조가 간단하고 데이터를 읽는 데 걸리는 시간(접근시간, access time)이 짧다.**<br>
+  <br>
+
+* 단점<br>
+1. **배열은 한번 생성하면 크기를 변경할 수 없다.**<br>
+  -크기를 변경해야 하는 경우 새로운 배열을 생성 후 데이터를 복사힌 다음, 참조를 변경해야함.<br>
+  -크기 변경을 피하기 위해 충분히 큰 배열을 생성하면, 메모리가 낭비됨.<br>
+  <br>
+ 2. **비순차적인 데이터의 추가,삭제에 시간이 많이걸린다.(배열의 중간에 값을 추가 또는 삭제하는경우)**<br>
+  -데이터를 추가하거나 삭제하기 위해,다른 데이터를 옮겨야 함.
+  -그러나 순차적인 데이터 추가(끝에 추가)와 삭제(끝부터 삭제)는 빠르다.
+
+---
+
+
+### ✅LinkedList란?
+
+* 배열의 단점을 보완하기 위해 나타난 자료구조가 LinkedList이다.
+* 연결 리스트(LinkedList)는 불연속적으로 존재하는 데이터를 서로 연결(link)한 형태로 구성되어 있다.
+
+---
+
+### ✅LinkedList와 배열 비교
+* 장점 <br>
+
+1. **데이터의 삭제: 단 한번의 참조 변경만으로 가능**
+![image description](/assets/images/collection4.png)<br>
+
+
+2. **데이터 추가:한 번의 Node 객체 생성과 두 번의 참조 변경만으로 가능**
+![image description](/assets/images/collection5.png)<br>
+
+
+* 단점 <br>
+
+1. **데이터 접근성이 나쁘다**<br>
+(연결 리스트에 5개의 노드가 있다고 가정하면 세번쨰 노드에 접근하려면 첫 번쨰 노드 부터 차례대로 찾아가야 한다. 배열처럼 한 번에 갈 수 없다.)
+
+---
+
+### ✅LinkedList 종류
+
+1. **단일 연결 리스트**<br>
+- 단일 연결 리스트는 이동 방향이 단뱡향이기 떄문에 다음 요소에 대해 접근은 쉽지만 이전 요소에 대한 접근은 어렵다.
+![image description](/assets/images/collection6.png)<br>
+
+2. **이중 연결 리스트**<br>
+- 단일 연결 리스트의 접근성을 향상 시킨 것이 이중 연결 리스트 이다.<br>
+- 이중 연결 리스트는 참조 변수를 하나 더 추가하여 다음 요소에 대한 참조 뿐만 아니라 이전 요소에 대한 참조가 가능 하도록 하였다.
+- Java의 LinkedList는 이중 연결 리스트로 구현 되어 있다.
+![image description](/assets/images/collection7.png)<br>
+
+3. **이중 원형 연결 리스트**<br>
+- 이중 연결 리스트의 접근성을 향상 시킨 것이 이중 원형 연결 리스트 이다.<br>
+- 이중 연결 리스트의 첫 번쨰 요소와 마지막 요소를 서로 연결 시킨 것이다.
+![image description](/assets/images/collection8.png)<br>
+
+---
+
+
+### ✅ArrayList vs LinkedList 성능 비교
+1. 순차적으로 데이터를 추가/삭제 - ArrayList가 빠름
+2. 비순차적으로 데이터를 추가/삭제 - LinkedList가 빠름
+3. 접근 시간(access time) - ArrayList가 빠름 (여기서 접근시간이란 데이터를 읽는 시간이다)
+
+
