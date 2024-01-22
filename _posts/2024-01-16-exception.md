@@ -1,5 +1,5 @@
 ---
-title: "[Java] 자바 예외처리"
+title: "[Java] 예외처리"
 excerpt: "자바 예외 클래스의 계층구조와 예외처리하기 try-catch문 실습"
 
 categories:

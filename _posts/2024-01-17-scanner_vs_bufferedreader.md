@@ -1,5 +1,5 @@
 ---
-title: "[Java] 자바 입출력 Scanner vs Bufferedreader 차이"
+title: "[Java] 입출력 Scanner vs Bufferedreader 차이"
 excerpt: " 자바 입출력 Scanner와 Bufferedreader 차이 구별하기"
 
 categories:
