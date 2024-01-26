@@ -1,7 +1,7 @@
 ---
 
 published: true
-title: "[Java] 컬렉션 프레임워크 Set (2/3)"
+title: "[Java] 컬렉션 프레임워크 Set (2/2)"
 excerpt: "자바 컬렉션 프레임워크 Set 컬렉션  HashSet,TreeSet 알아보기."
 
 categories:

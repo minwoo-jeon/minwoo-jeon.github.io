@@ -1,7 +1,7 @@
 ---
 
 published: true
-title: "[Java] 컬렉션 프레임워크 list (1/3)"
+title: "[Java] 컬렉션 프레임워크 list (1/2)"
 excerpt: "수많은 데이터를 효율적으로 관리할수있는 자바 컬렉션 프레임워크에 대해서 알아보기."
 
 categories:
