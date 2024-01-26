@@ -19,11 +19,10 @@ date: 2024-01-25
 last_modified_at: 2024-01-25
 ---
 
-ref -Java의 정석(남궁성) 
-{: .notice--info}
 
 
-## 📌HashSet
+
+## 🔥set -HashSet
 
 
 ### ✅HashSet과TreeSet 상속관계
@@ -83,7 +82,7 @@ public class Ex11_9 {
 
 ---
 
-## 📌TreeSet
+## 🔥set-TreeSet
 
 
 ### ✅TreeSet이란?
@@ -115,3 +114,145 @@ TreeSet은 compare()를 호출해서 비교
 TreeSet 트리 순회(전위,중위,후위)
 * 이진 트리의 모든 노드를 한번씩 읽는 것을 트리 순회라고 한다.
 * 전위,중위,후위 순회법이 있으며,중위 순회하면 오름차순으로 정렬된다.
+
+---
+
+## 🔥Map-HashMap
+
+### ✅HashMap이란?
+* HashMap' 은 키(Key)와 값(value)쌍을 저장하는 자료 구조이다.<br>
+각 키는 고유하며, 키를 사용하여 해당하는 값을 빠르게 검색할 수 있다
+
+* 해싱 (Hashing) :
+'HashMap'의 핵심 원리이다.
+'해싱 함수(Hashing Functoin)'는 키(key)를 받아서
+정수값인 '해시코드(Hashcode)'를 반환하고,
+반환된 해시코드는 Hash 배열의 각 요소인 '버킷(Bucket)'의 인덱스가 된다.
+
+![image description](/assets/images/hashmap.png)<br>
+
+이 예시에서도 보이듯이 배열의 각 요소를 **'버킷'**이라고 한다.
+
+요약하면,
+키(key)를 주면 해싱 함수에 의해 해시코드로 변환되고, 해당 해시코드는 배열의 각 요소인. 버킷의 인덱스 역할을 한다. 해당 버킷을 찾아가면 값을 삽입 및 조회할 수 있다.
+
+
+
+### ✅HashMap 사용해서 예제코드 만들어보기1
+
+```java
+package collection;
+
+import javax.sound.midi.SysexMessage;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Ex_16 {
+    public static void main(String[] args) {
+        HashMap map = new HashMap();
+        map.put("admin", "1234");
+        map.put("min", "123");
+        map.put("admin", "12345");
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("아이디와 비밀번호를 입력해주세요");
+            System.out.print("id:");
+            String id = sc.nextLine();
+
+            System.out.print("password:");
+            String password = sc.nextLine().trim();
+
+            if (!(map.containsKey(id))) {
+                System.out.println("등록되지 않은 아이디 입니다 다시입력해주세요.");
+                continue;
+            }
+            if (!(map.get(id)).equals(password)) {
+                System.out.println("비밀번호가 일치하지 않습니다 다시 입력해주세요");
+            }else{
+                System.out.println("id와 비밀번호가 일치합니다");
+                break;
+            }
+        }
+    }
+}
+
+```
+* map을 생성해서 put()메서드를 사용해서 값을 넣는다.
+* 여기서 admin 의 값은 12345 로 값을 초기화 시킨다.
+* ContainsKey(Object Key) 메서드를 통해 map에 등록한 id값이랑 매개변수로 들어온 id 값을 비교 
+* map.get(id) 매개변수로 입력받은 id값을 넘기면 지정된 키의 값을 반환 받는다 => ex) admin입력할경우 12345가 들어오면서 eqauls 문자비교
+
+---
+
+### ✅HashMap 사용해서 예제코드 만들어보기2
+
+```java
+package collection;
+
+import java.util.*;
+
+public class Ex11_17 {
+    public static void main(String[] args) {
+        HashMap map = new HashMap();
+        map.put("김자바", new Integer(90));
+        map.put("김자바", new Integer(100)); //key값이 일치하기떄문에 새로운값으로 바뀜 ==100
+        map.put("이자바", new Integer(100));sasa
+        map.put("강자바", new Integer(80));
+        map.put("안자바", new Integer(90));
+
+        Set set = map.entrySet(); // HashMap에 저장된 키와 값을 엔트리 형태로 set에 저장해서 반환 
+        Iterator it = set.iterator();
+
+        while (it.hasNext()) {
+          // Iterator 조상타입 -> Map.Entry 자손 타입의 형변환 ( 다운 캐스팅 )
+            Map.Entry e = (Map.Entry) it.next();
+            System.out.println("이름:" + e.getKey() + ", 점수:"+ e.getValue());
+        }
+
+        set = map.keySet();
+        System.out.println("참가자 명단:" + set);
+
+        Collection values = map.values();
+        it = values.iterator();
+
+        int total = 0;
+
+        while (it.hasNext()) {
+            int i = (int) it.next();
+            total += i;
+
+        }
+
+        
+            System.out.println(" 총점:" + total);
+            System.out.println(" 평균:" + (float)total/set.size());
+            System.out.println(" 최고점수:" + Collections.max(values));
+            System.out.println(" 최저점수:" + Collections.min(values));
+    }
+}
+
+```
+
+* entrySet()=> map에 저장된 키와 값을 엔트리의 형태로 set에 저장해서 반환
+* entrySet은 Map.Entry로 받아야한다. 
+* // Iterator 조상타입 -> Map.Entry 자손 타입의 형변환 ( 다운 캐스팅 )
+
+
+--
+
+
+## 🔥Map-TreeMap
+
+
+
+<br>
+
+
+참고
+
+* Java의 정석(남궁성) ,
+* https://velog.io/@cchoijjinyoung/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-5-HashMap%ED%95%B4%EC%8B%9C%EB%A7%B5%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90
+* https://kevinntech.tistory.com/16<br>
+* https://babgeuleus.tistory.com/entry/Map%EC%9D%98-EntrySet%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9E%90%EC%84%B8%ED%95%9C-%EC%84%A4%EB%AA%85%EB%A7%B5%EC%9D%84-%ED%83%90%EC%83%89%ED%95%98%EB%8A%94-4%EA%B0%80%EC%A7%80-%EB%B0%A9%EB%B2%95
